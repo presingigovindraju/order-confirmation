@@ -1,0 +1,371 @@
+
+<div class="loading-container" *ngIf="loading">
+  Loading order information...
+</div>
+
+<div class="error-container" *ngIf="errorMessage">
+  {{ errorMessage }}
+</div>
+
+<main class="order-page" *ngIf="!loading && order as data">
+
+  <!-- ======================================
+       THANK YOU SECTION
+  ======================================= -->
+
+  <section class="thank-you-section">
+
+    <h1>Thank You For Your Order!</h1>
+
+    <p>
+      A copy of your order details has been sent to
+      <strong>{{ data.email }}</strong>
+    </p>
+
+    <p>
+      Need help with your order?
+      Call {{ data.supportPhone }},
+      {{ data.supportHours }}
+      or <a href="#">Live Chat now.</a>
+    </p>
+
+  </section>
+
+
+  <!-- ======================================
+       ORDER INFORMATION AND BILLING
+  ======================================= -->
+
+  <section class="order-information">
+
+    <!-- ORDER DETAILS -->
+
+    <div class="order-details">
+
+      <h2>Order #{{ data.orderNumber }}</h2>
+
+      <div class="detail-row">
+
+        <strong>Date Placed</strong>
+
+        <span>
+          {{ data.orderDate | date:'MMM d, y, h:mm a' }}
+        </span>
+
+      </div>
+
+      <div class="detail-row">
+
+        <strong>Status</strong>
+
+        <span>{{ data.status }}</span>
+
+      </div>
+
+      <div class="detail-row">
+
+        <strong>PO #</strong>
+
+        <span>{{ data.poNumber }}</span>
+
+      </div>
+
+      <div class="detail-row">
+
+        <strong>Total</strong>
+
+        <span>
+          {{ data.totals.estimatedOrderTotal | currency:'USD' }}
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <!-- BILLING INFORMATION -->
+
+    <div class="billing-information">
+
+      <h3>Billing Information</h3>
+
+      <p>{{ data.billingInformation.name }}</p>
+
+      <p *ngIf="data.billingInformation.addressLine1">
+        {{ data.billingInformation.addressLine1 }}
+      </p>
+
+      <p *ngIf="data.billingInformation.addressLine2">
+        {{ data.billingInformation.addressLine2 }}
+      </p>
+
+      <p>
+        {{ data.billingInformation.city }},
+        {{ data.billingInformation.state }}
+        {{ data.billingInformation.postalCode }}
+      </p>
+
+      <p>{{ data.billingInformation.country }}</p>
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================
+       SHIPPING INFORMATION AND PRODUCTS
+  ======================================= -->
+
+  <section class="shipping-section">
+
+    <!-- SHIPPING ADDRESS AND METHOD -->
+
+    <div class="shipping-information">
+
+      <div class="shipping-address">
+
+        <h3>SHIP TO</h3>
+
+        <p>{{ data.shippingAddress.name }}</p>
+
+        <p *ngIf="data.shippingAddress.addressLine1">
+          {{ data.shippingAddress.addressLine1 }}
+        </p>
+
+        <p *ngIf="data.shippingAddress.addressLine2">
+          {{ data.shippingAddress.addressLine2 }}
+        </p>
+
+        <p>
+          {{ data.shippingAddress.city }},
+          {{ data.shippingAddress.state }}
+          {{ data.shippingAddress.postalCode }}
+        </p>
+
+        <p>{{ data.shippingAddress.country }}</p>
+
+      </div>
+
+
+      <div class="shipping-method">
+
+        <h3>SHIPPING METHOD</h3>
+
+        <p>{{ data.shippingMethod }}</p>
+
+        <p>{{ data.shippingType }}</p>
+
+      </div>
+
+    </div>
+
+
+    <!-- PRODUCT TABLE -->
+
+    <div class="product-table">
+
+      <!-- TABLE HEADER -->
+
+      <div class="product-header">
+
+        <div>Item</div>
+
+        <div>Price</div>
+
+        <div>Qty</div>
+
+        <div>Unit</div>
+
+        <div>Total</div>
+
+      </div>
+
+
+      <!-- PRODUCT ROW -->
+
+      <div
+        class="product-row"
+        *ngFor="let item of data.items"
+      >
+
+        <!-- PRODUCT IMAGE AND DESCRIPTION -->
+
+        <div class="product-information">
+
+          <div class="product-image-wrapper">
+
+            <img
+              [src]="item.imageUrl"
+              [alt]="item.productName"
+              class="product-image"
+            />
+
+          </div>
+
+          <div class="product-description">
+
+            <h4>{{ item.productName }}</h4>
+
+            <p>{{ item.sku }}</p>
+
+            <strong
+              class="backorder-status"
+              *ngIf="item.status"
+            >
+              {{ item.status }}
+            </strong>
+
+            <p
+              class="product-meta"
+              *ngIf="item.plant || item.estimatedShipDate"
+            >
+
+              <ng-container *ngIf="item.plant">
+                Plant: {{ item.plant }}
+              </ng-container>
+
+              <ng-container *ngIf="item.estimatedShipDate">
+                | Est.Ship Date:
+                {{ item.estimatedShipDate | date:'MM-dd-yyyy' }}
+              </ng-container>
+
+            </p>
+
+            <p class="product-meta">
+              {{ item.description }}
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- PRODUCT PRICE -->
+
+        <div class="product-price">
+
+          {{ item.price | currency:'USD' }}
+
+        </div>
+
+
+        <!-- QUANTITY -->
+
+        <div class="product-quantity">
+
+          {{ item.quantity }}
+
+        </div>
+
+
+        <!-- UNIT -->
+
+        <div class="product-unit">
+
+          {{ item.unit }}
+
+        </div>
+
+
+        <!-- TOTAL -->
+
+        <div class="product-total">
+
+          {{ item.total | currency:'USD' }}
+
+        </div>
+
+      </div>
+
+      <div class="empty-products" *ngIf="data.items.length === 0">
+        No products found for this order.
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ======================================
+       PROMOTIONS AND ORDER TOTALS
+  ======================================= -->
+
+  <section class="order-bottom">
+
+
+    <!-- PROMOTIONS -->
+
+    <div class="promotions-section">
+
+      <h3>Promotion(s) Applied</h3>
+
+      <p *ngFor="let promotion of data.promotions">
+        {{ promotion }}
+      </p>
+
+    </div>
+
+
+    <!-- ORDER TOTALS -->
+
+    <div class="order-totals">
+
+      <div class="total-row">
+
+        <span>Subtotal:</span>
+
+        <strong>
+          {{ data.totals.subtotal | currency:'USD' }}
+        </strong>
+
+      </div>
+
+
+      <div class="total-row">
+
+        <span>Estimated Freight:</span>
+
+        <strong>
+          {{ data.totals.estimatedFreight | currency:'USD' }}
+        </strong>
+
+      </div>
+
+
+      <div class="total-row">
+
+        <span>Estimated Tax:</span>
+
+        <strong>
+          {{ data.totals.estimatedTax | currency:'USD' }}
+        </strong>
+
+      </div>
+
+
+      <div class="total-row">
+
+        <span>Estimated Accessorials Cost:</span>
+
+        <strong>
+          {{ data.totals.estimatedAccessorialsCost | currency:'USD' }}
+        </strong>
+
+      </div>
+
+
+      <div class="total-row grand-total">
+
+        <span>Estimated Order Total</span>
+
+        <strong>
+          {{ data.totals.estimatedOrderTotal | currency:'USD' }}
+        </strong>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>

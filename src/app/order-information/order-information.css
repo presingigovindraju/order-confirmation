@@ -1,0 +1,494 @@
+
+/* ======================================
+   GLOBAL STYLES
+====================================== */
+
+:host {
+  display: block;
+  width: 100%;
+  font-family: 'Montserrat', Arial, sans-serif;
+  color: #303030;
+  font-size: 14px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.order-page {
+  width: 100%;
+  max-width: 1315px;
+  margin: 0 auto;
+  padding: 35px 15px 50px;
+}
+
+p {
+  margin: 3px 0;
+  line-height: 1.5;
+}
+
+
+/* ======================================
+   THANK YOU SECTION
+====================================== */
+
+.thank-you-section {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 52px;
+}
+
+.thank-you-section h1 {
+  color: #303030;
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 14px;
+}
+
+.thank-you-section p {
+  font-size: 14px;
+  margin-bottom: 9px;
+}
+
+.thank-you-section strong {
+  font-weight: 700;
+}
+
+.thank-you-section a {
+  color: #2876a8;
+  text-decoration: none;
+}
+
+
+/* ======================================
+   ORDER INFORMATION SECTION
+====================================== */
+
+.order-information {
+  width: 100%;
+  min-height: 326px;
+  display: grid;
+  grid-template-columns: 34% 1fr;
+  column-gap: 8%;
+  background: #fafafa;
+  border: 1px solid #d5d5d5;
+  padding: 28px 5px;
+}
+
+
+/* ORDER DETAILS */
+
+.order-details {
+  width: 100%;
+}
+
+.order-details h2 {
+  font-size: 19px;
+  font-weight: 400;
+  margin: 0;
+  padding-bottom: 22px;
+  border-bottom: 1px solid #d5d5d5;
+}
+
+.detail-row {
+  width: 100%;
+  min-height: 53px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid #d5d5d5;
+}
+
+.detail-row strong {
+  color: #888;
+  font-weight: 700;
+}
+
+.detail-row span {
+  text-align: right;
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+
+/* BILLING INFORMATION */
+
+.billing-information {
+  width: 100%;
+}
+
+.billing-information h3 {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 5px 0 14px;
+}
+
+
+/* ======================================
+   SHIPPING SECTION
+====================================== */
+
+.shipping-section {
+  width: 100%;
+  background: #fafafa;
+  border: 1px solid #d5d5d5;
+  margin-top: 20px;
+  padding: 30px 28px 20px;
+}
+
+.shipping-information {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 42px;
+}
+
+.shipping-information h3 {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0 0 4px;
+}
+
+
+/* ======================================
+   PRODUCT TABLE
+====================================== */
+
+.product-table {
+  width: 100%;
+}
+
+
+/* TABLE HEADER */
+
+.product-header {
+  display: grid;
+  grid-template-columns: minmax(300px, 3fr) 1fr 0.55fr 1fr 1fr;
+  gap: 15px;
+  align-items: center;
+  padding: 0 10px 13px;
+  border-bottom: 1px solid #d0d0d0;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.product-header div:not(:first-child) {
+  text-align: center;
+}
+
+.product-header div:last-child {
+  text-align: right;
+}
+
+
+/* PRODUCT ROW */
+
+.product-row {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(300px, 3fr) 1fr 0.55fr 1fr 1fr;
+  gap: 15px;
+  align-items: start;
+  background: #fff;
+  border: 1px solid #d5d5d5;
+  margin-top: 10px;
+  padding: 20px;
+  min-height: 145px;
+}
+
+
+/* PRODUCT INFORMATION */
+
+.product-information {
+  display: flex;
+  align-items: flex-start;
+  gap: 25px;
+}
+
+.product-image-wrapper {
+  width: 115px;
+  height: 105px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.product-description {
+  min-width: 0;
+}
+
+.product-description h4 {
+  color: #172d52;
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 0 3px;
+}
+
+.product-description p {
+  font-size: 12px;
+}
+
+.backorder-status {
+  display: block;
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.product-meta {
+  color: #555;
+}
+
+
+/* PRODUCT PRICE, QTY, UNIT AND TOTAL */
+
+.product-price,
+.product-quantity,
+.product-unit,
+.product-total {
+  text-align: center;
+  font-size: 13px;
+  padding-top: 3px;
+}
+
+.product-total {
+  text-align: right;
+  font-weight: 700;
+}
+
+.empty-products {
+  padding: 25px 10px;
+  text-align: center;
+}
+
+
+/* ======================================
+   PROMOTIONS AND TOTALS
+====================================== */
+
+.order-bottom {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 395px;
+  gap: 30px;
+  margin-top: 75px;
+  padding: 0 28px;
+}
+
+
+/* PROMOTIONS */
+
+.promotions-section h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+}
+
+
+/* TOTALS */
+
+.order-totals {
+  width: 100%;
+}
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 17px;
+  font-size: 15px;
+}
+
+.total-row strong {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.grand-total {
+  margin-top: 20px;
+}
+
+.grand-total strong {
+  font-size: 19px;
+}
+
+
+/* ======================================
+   LOADING AND ERROR
+====================================== */
+
+.loading-container,
+.error-container {
+  text-align: center;
+  padding: 80px 20px;
+  font-size: 16px;
+}
+
+.error-container {
+  color: #c62828;
+}
+
+
+/* ======================================
+   TABLET RESPONSIVE
+====================================== */
+
+@media (max-width: 1024px) {
+
+  .order-information {
+    grid-template-columns: 42% 1fr;
+    column-gap: 5%;
+  }
+
+  .product-header,
+  .product-row {
+    grid-template-columns: minmax(220px, 2.5fr) 1fr 0.5fr 0.7fr 1fr;
+    gap: 10px;
+  }
+
+  .product-information {
+    gap: 12px;
+  }
+
+  .product-image-wrapper {
+    width: 85px;
+    height: 95px;
+  }
+
+  .order-bottom {
+    grid-template-columns: 1fr 350px;
+  }
+
+}
+
+
+/* ======================================
+   MOBILE RESPONSIVE
+====================================== */
+
+@media (max-width: 768px) {
+
+  .order-page {
+    padding: 25px 12px;
+  }
+
+  .thank-you-section {
+    margin-bottom: 30px;
+  }
+
+  .thank-you-section h1 {
+    font-size: 23px;
+  }
+
+  .order-information {
+    grid-template-columns: 1fr;
+    row-gap: 25px;
+    padding: 20px 15px;
+  }
+
+  .shipping-section {
+    padding: 20px 15px;
+  }
+
+  .shipping-information {
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 25px;
+  }
+
+  /* Hide desktop product header */
+
+  .product-header {
+    display: none;
+  }
+
+  /* Product card */
+
+  .product-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 15px;
+  }
+
+  .product-information {
+    grid-column: 1 / -1;
+  }
+
+  .product-price,
+  .product-quantity,
+  .product-unit,
+  .product-total {
+    text-align: left;
+  }
+
+  .product-price::before {
+    content: 'Price: ';
+    font-weight: 700;
+  }
+
+  .product-quantity::before {
+    content: 'Qty: ';
+    font-weight: 700;
+  }
+
+  .product-unit::before {
+    content: 'Unit: ';
+    font-weight: 700;
+  }
+
+  .product-total::before {
+    content: 'Total: ';
+    font-weight: 400;
+  }
+
+  /* Order totals */
+
+  .order-bottom {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-top: 35px;
+    padding: 0 10px;
+  }
+
+}
+
+
+/* ======================================
+   SMALL MOBILE
+====================================== */
+
+@media (max-width: 480px) {
+
+  .shipping-information {
+    grid-template-columns: 1fr;
+  }
+
+  .product-information {
+    gap: 10px;
+  }
+
+  .product-image-wrapper {
+    width: 75px;
+    height: 85px;
+  }
+
+  .product-description h4 {
+    font-size: 13px;
+  }
+
+  .total-row {
+    font-size: 13px;
+  }
+
+}
